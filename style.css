@@ -1,0 +1,512 @@
+/* ==========================================================================
+   1. CONFIGURACIÓN GLOBAL Y ESTRUCTURA BASE
+   ========================================================================== */
+
+body {
+    background-color: #2c2c2e;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden;
+    box-sizing: border-box; /* Nota: Se recomienda aplicar '*' para que afecte a todos los elementos */
+}
+
+/* ==========================================================================
+   2. NAVEGACIÓN (NAV)
+   ========================================================================== */
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; /* Reemplaza align-content y vertical-align (inválido aquí) */
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 7vh;
+    padding: 0 5%;
+    background-color: #1d1d1d;
+    transition: background-color 0.3s ease; /* Optimizado: transiciona solo la propiedad necesaria */
+}
+
+nav:hover {
+    background-color: #070707;
+}
+
+/* Contenedor de enlaces dentro del nav */
+nav > span {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; /* Corregido para centrar verticalmente los enlaces */
+    justify-content: space-between;
+    width: 23%;
+    transition: all 0.3s ease; /* Atajo abreviado estándar */
+}
+
+/* Enlaces de navegación */
+nav > span > a {
+    color: #69489e;
+    text-decoration: none;
+    font-size: 1.3em;
+    transition: font-size 0.2s ease; /* Transición específica en vez de 'all' */
+}
+
+nav > span > a:visited {
+    color: #69489e;
+    text-decoration: none;
+}
+
+nav > span > a:hover {
+    font-size: 1.5em;
+}
+
+/* ==========================================================================
+   3. CONTENEDOR PRINCIPAL (GRID REUTILIZABLE)
+   ========================================================================== */
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    height: 90vh;
+    margin-top: 6vh;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Estilo genérico para celdas del Grid */
+.grid-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+}
+
+/* ==========================================================================
+   4. COMPONENTE principal: STREAM DESTACADO (ITEM A)
+   ========================================================================== */
+
+.item-a {
+    grid-column: span 4;
+    grid-row: span 2;
+    display: flex;
+    background-color: #060608;
+    color: #ffffff;
+    border-radius: 4px;
+    max-width: 100%;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.thumbnail-container {
+    position: relative;
+    width: 45%;
+    background: linear-gradient(135deg, #1e1035, #0b071a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Información textual del stream */
+.stream-info {
+    width: 55%;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.stream-status {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #a370f7;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.stream-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0 0 16px 0;
+    color: #f5f5f7;
+}
+
+.stream-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 13px;
+    color: #adadb8;
+    margin-bottom: 16px;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.stream-description {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #adadb8;
+    margin-bottom: 24px;
+}
+
+/* Botones de acción del stream */
+.action-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.btn {
+    flex: 1;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #772ce8;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #5c16c5;
+}
+
+.btn-secondary {
+    background-color: #1f1f23;
+    color: #efeff1;
+    border: 1px solid #3a3a3d;
+}
+
+.btn-secondary:hover {
+    background-color: #26262c;
+}
+
+/* ==========================================================================
+   5. COMPONENTE: INFORMACIÓN LATERAL / HORARIOS (ITEM B)
+   ========================================================================== */
+
+.item-b {
+    grid-column: 5;
+    grid-row: span 2;
+    display: flex;
+    flex-direction: column;
+    background-color: #0c0d14;
+    color: #ffffff;
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.left-column {
+    flex: 1.2;
+}
+.right-column {
+    flex: 1;
+}
+
+.info-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0 0 16px 0;
+    color: #ffffff;
+}
+
+.info-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #adadb8;
+    margin: 0;
+}
+
+/* Sección central con Grid interno */
+.center-column {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 12px;
+    align-self: center;
+    padding: 0 10px;
+}
+
+.category-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #adadb8;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.category-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    color: #a370f7;
+    font-size: 18px;
+}
+
+/* Banner de Horarios */
+.schedule-banner {
+    background-color: #131422;
+    border-left: 4px solid #5c16c5;
+    border-radius: 4px;
+    padding: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    min-height: 80px;
+}
+
+.schedule-icon {
+    color: #a370f7;
+    font-size: 22px;
+    margin-top: 2px;
+}
+
+.schedule-text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.schedule-main {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffffff;
+    line-height: 1.3;
+}
+
+.schedule-sub {
+    font-size: 12px;
+    color: #adadb8;
+    line-height: 1.3;
+}
+
+/* ==========================================================================
+   6. COMPONENTE: TARJETAS DE VIDEOS / HISTORIAL (ITEMS D, E, F, G)
+   ========================================================================== */
+
+/* Ubicaciones individuales en el Grid */
+.item-d {
+    grid-column: 1;
+    grid-row: 3;
+}
+.item-e {
+    grid-column: 2;
+    grid-row: 3;
+}
+.item-f {
+    grid-column: 3;
+    grid-row: 3;
+}
+.item-g {
+    grid-column: 4;
+    grid-row: 3;
+}
+
+/* Estilos compartidos unificados */
+.item-d,
+.item-e,
+.item-f,
+.item-g {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    background-color: #0c0d14;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.thumbnail-wrapper {
+    position: relative;
+    width: 100%;
+    height: 115px;
+    background: linear-gradient(135deg, #2c1654, #120924);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thumbnail-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.badge-live {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #5c16c5;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.duration-tag {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #ffffff;
+    font-size: 11px;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-variant-numeric: tabular-nums;
+}
+
+.video-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Limitador de texto a 2 líneas (Tratamiento multilínea clásico) */
+.video-title {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #ffffff;
+    margin: 0;
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.video-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+    color: #adadb8;
+}
+
+.meta-element {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.meta-icon {
+    color: #a370f7;
+    font-size: 14px;
+}
+
+/* ==========================================================================
+   7. COMPONENTE: REDES SOCIALES (ITEM C)
+   ========================================================================== */
+
+.item-c {
+    grid-column: 5;
+    grid-row: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #0c0d14;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.social-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff;
+    margin: 0 0 4px 0;
+    display: inline-block;
+}
+
+.title-underline {
+    width: 18px;
+    height: 3px;
+    background-color: #5c16c5;
+    margin-bottom: 24px;
+    border-radius: 2px;
+}
+
+.social-row {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.social-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #adadb8;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.social-item:hover {
+    color: #ffffff;
+}
+
+/* Cajas contenedoras de iconos */
+.icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+}
+
+.social-item:hover .icon-box {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+/* Colores temáticos de plataformas */
+.bg-twitch {
+    background: linear-gradient(135deg, #772ce8, #451093);
+}
+.bg-youtube {
+    background-color: #ffffff;
+}
+.bg-discord {
+    background-color: #2b2d38;
+}
+.bg-x {
+    background-color: #15181c;
+    border: 1px solid #2f3336;
+}
+
+.svg-icon {
+    width: 24px;
+    height: 24px;
+}
